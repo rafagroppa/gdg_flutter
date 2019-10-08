@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.gdg_flutter">
+    package="br.com.gdggroppa.app">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -10,7 +10,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="gdg_flutter"
+        android:label="app"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

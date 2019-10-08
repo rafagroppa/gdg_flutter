@@ -1,4 +1,4 @@
-# gdg_flutter
+# app
 
 A new Flutter project.
 

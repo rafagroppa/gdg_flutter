@@ -1,4 +1,4 @@
-package com.example.gdg_flutter
+package br.com.gdggroppa.app
 
 import android.os.Bundle
 

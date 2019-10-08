@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -7,6 +8,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Future<FirebaseUser> _handleCreateUser() async {
+    final FirebaseUser user = (await _auth.createUserWithEmailAndPassword(
+      email: "rafagroppa@gmail.com",
+      password: "ronaldo"
+    )).user;
+
+    return user;
+  }
+
+  Future<FirebaseUser> _handleLogin() async {
+    final AuthResult user = await _auth.signInWithEmailAndPassword(
+      email: "rafagroppa@gmail.com",
+      password: "ronaldo"
+    );
+
+    return user.user;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +112,9 @@ class _HomePageState extends State<HomePage> {
                           style: BorderStyle.solid,
                           width: 2
                         ),
-                        onPressed: () {},
+                        onPressed: () async {
+                          await _handleLogin();
+                        },
                       ),
                     )
                   ],

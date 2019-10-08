@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "381978546024",
+    "firebase_url": "https://gdg-firebase-b8fa5.firebaseio.com",
+    "project_id": "gdg-firebase-b8fa5",
+    "storage_bucket": "gdg-firebase-b8fa5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381978546024:android:7e373371b8cf712957d0dd",
+        "android_client_info": {
+          "package_name": "br.com.gdggroppa.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381978546024-t9e02b758khg0tdmfet9hk13v6advoih.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM4L-ff_30YLvnFwgYv3b817H_xnPoktY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381978546024-t9e02b758khg0tdmfet9hk13v6advoih.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
