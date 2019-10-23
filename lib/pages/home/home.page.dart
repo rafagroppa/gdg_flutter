@@ -1,3 +1,6 @@
+import 'package:app/pages/create-account/create-account.page.dart';
+import 'package:app/pages/list/list.page.dart';
+import 'package:app/pages/login/login.page.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -66,29 +69,18 @@ class _HomePageState extends State<HomePage> {
                         textColor: Colors.white,
                         padding: EdgeInsets.fromLTRB(20, 10, 20, 10),                
                         child: Text(
-                          "LOGIN WITH FACEBOOK", 
+                          "LOGIN WITH E-MAIL", 
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold
                           ),
                         ),
-                        onPressed: () async {
-                          LocationData currentLocation;
-
-                          var location = new Location();
-
-                          // Platform messages may fail, so we use a try/catch PlatformException.
-                          try {
-                            currentLocation = await location.getLocation();
-                            print(currentLocation.latitude);
-                            print(currentLocation.longitude);
-                          } on Exception catch (e) {
-                            // if (e.code == 'PERMISSION_DENIED') {
-                            //   error = 'Permission denied';
-                            // } 
-                            print(e);
-                            currentLocation = null;
-                          }
+                        onPressed: () {
+                          Navigator.push(
+                            context,              
+                            //MaterialPageRoute(builder: (context) => LoginPage()),
+                            MaterialPageRoute(builder: (context) => ListPage())
+                          );
                         },
                       ),
                     ),
@@ -101,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                         textColor: Colors.white,
                         padding: EdgeInsets.fromLTRB(20, 10, 20, 10),                
                         child: Text(
-                          "LOGIN WITH PHONE NUMBER", 
+                          "CADASTRO", 
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold
@@ -113,7 +105,11 @@ class _HomePageState extends State<HomePage> {
                           width: 2
                         ),
                         onPressed: () async {
-                          await _handleLogin();
+                          //await _handleLogin();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => CreateAccountPage()),
+                          );
                         },
                       ),
                     )
