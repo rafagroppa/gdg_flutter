@@ -1,3 +1,4 @@
+import 'package:app/pages/autenticacao/autenticacao.page.dart';
 import 'package:app/pages/create-account/create-account.page.dart';
 import 'package:app/pages/list/list.page.dart';
 import 'package:app/pages/login/login.page.dart';
@@ -79,7 +80,8 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,              
                             //MaterialPageRoute(builder: (context) => LoginPage()),
-                            MaterialPageRoute(builder: (context) => ListPage())
+                            //MaterialPageRoute(builder: (context) => ListPage())
+                            MaterialPageRoute(builder: (context) => AutenticacaoPage())
                           );
                         },
                       ),
