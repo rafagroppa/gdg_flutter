@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:app/pages/autenticacao/autenticacao.page.dart';
 import 'package:app/pages/create-account/create-account.page.dart';
 import 'package:app/pages/list/list.page.dart';
 import 'package:app/pages/login/login.page.dart';
+import 'package:app/shared/Message.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,6 +18,58 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  List<Message> messages = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    FirebaseCloudMessaging_Listeners();
+  }
+
+  void FirebaseCloudMessaging_Listeners() {
+    if (Platform.isIOS) IosPermission();
+
+    _firebaseMessaging.getToken().then((token) {
+      print("######token#######");
+      print(token);
+      print(token);
+      print(token);
+      print(token);
+      print(token);
+      print(token);
+      print(token);
+    });
+
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        print('on message $message');
+        final notification = message["notification"];
+        messages.add(Message(
+          title: notification["title"],
+          body: notification["body"],
+        ));
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print('on resume $message');
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print('on launch $message');
+      },
+    );
+  }
+
+  void IosPermission() {
+    _firebaseMessaging.requestNotificationPermissions(
+        IosNotificationSettings(sound: true, badge: true, alert: true));
+    _firebaseMessaging.onIosSettingsRegistered
+        .listen((IosNotificationSettings settings) {
+      print("Settings registered: $settings");
+    });
+  }
+
 
   Future<FirebaseUser> _handleCreateUser() async {
     final FirebaseUser user = (await _auth.createUserWithEmailAndPassword(
@@ -31,6 +87,10 @@ class _HomePageState extends State<HomePage> {
     );
 
     return user.user;
+  }
+
+  void _ronaldo() {
+
   }
 
   @override
@@ -77,12 +137,14 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.push(
-                            context,              
-                            //MaterialPageRoute(builder: (context) => LoginPage()),
-                            //MaterialPageRoute(builder: (context) => ListPage())
-                            MaterialPageRoute(builder: (context) => AutenticacaoPage())
-                          );
+                          // Navigator.push(
+                          //   context,              
+                          //   //MaterialPageRoute(builder: (context) => LoginPage()),
+                          //   //MaterialPageRoute(builder: (context) => ListPage())
+                          //   MaterialPageRoute(builder: (context) => AutenticacaoPage())                    
+                          // );
+
+                          this._ronaldo();
                         },
                       ),
                     ),
